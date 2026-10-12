@@ -294,7 +294,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     <div class="panel" role="tabpanel" id="p-all" aria-labelledby="t-all">
       <div class="keys">
         <div class="key"><span class="k">등록</span><span class="v mono">09:00–09:30</span></div>
-        <div class="key"><span class="k">참석 응답 (10/12)</span><span class="v">148명</span></div>
         <div class="key"><span class="k">행운권 추첨</span><span class="v mono">15:00</span></div>
         <div class="key"><span class="k">커스텀 매트</span><span class="v">14매</span></div>
       </div>
@@ -375,8 +374,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
           <figcaption>경기장 배치와 참고 사진</figcaption>
         </figure>
       </div>
-      <div class="legend"><span class="n both">이름</span> 줄다리기도 출전 · 1조에서 먼저 뛰고 줄다리기로 이동</div>
-      <div class="teams" id="relay-teams"></div>
     </div>
 
     <div class="panel" role="tabpanel" id="p-tug" aria-labelledby="t-tug" hidden>
@@ -397,7 +394,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
         <span class="arrow" aria-hidden="true">→</span>
         <div class="step"><span class="s">준결승 · 결승</span>1위 결승 직행, 2·3위 준결승</div>
       </div>
-      <p class="note">배점은 우승 100점, 준우승 80점, 3위 60점, 4~12위 40점입니다. 릴레이 겸 출전자 7명은 1조를 마치는 대로 합류합니다.</p>
+      <p class="note">배점은 우승 100점, 준우승 80점, 3위 60점, 4~12위 40점입니다. 에어사다리 겸 출전자는 릴레이를 마치는 대로 합류합니다.</p>
       <div class="howto">
         <div>
           <h3 id="how-tug-am">경기 방법 · 오전 예선</h3>
@@ -429,7 +426,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
           <figcaption>결승 배치와 참고 사진 (그림 속 해머치기는 대왕 제기차기로 바뀌었습니다)</figcaption>
         </figure>
       </div>
-      <div class="teams" id="tug-teams"></div>
     </div>
 
   </section>
@@ -447,38 +443,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <script>
 (function(){
-  var relay=[
-    {no:"1조",who:"",names:["유승빈","김예솔","김수빈","이재성","허정","김예권","문찬혁","박병찬"]},
-    {no:"2조",who:"",names:["김웅배","김진호","김민준","이태림","전제찬","이한철","장남선","이창현"]},
-    {no:"3조",who:"",names:["신영준","이태연","김기범","정희석","서은빈","최우석","류지훈","신승호"]},
-    {no:"4조",who:"",names:["김태현","정윤석","박홍준","안재현","안재우","이도현","김지민","최태훈"]}
-  ];
-  var tug=[
-    {no:"남",who:"출전 15명",names:["이재성","조원영","허정","박병찬","김예권","문찬혁","장승원","김남윤","오인영","이우진","천정호","조용진","이영준","도길록","이혜성"]},
-    {no:"여",who:"출전 15명",names:["김지연","김수지","장우정","손승희","장유선","유수경","박서윤","윤세은","신수현","김수빈","이수진","김예솔","박지은","오수민","유진"]},
-    {no:"예비",who:"결원 시 교체 · 모두 릴레이 출전",names:["김진호","이태연","정윤석","이한철","이창현","이태림"]}
-  ];
-  var both={"이재성":1,"허정":1,"박병찬":1,"김예권":1,"문찬혁":1,"김수빈":1,"김예솔":1};
-  function render(id,groups,markBoth){
-    var host=document.getElementById(id);
-    groups.forEach(function(g){
-      var card=document.createElement("article");card.className="team";
-      var real=g.names.filter(Boolean).length;
-      card.innerHTML='<header><span class="no"></span><span class="who"></span></header><div class="names"></div>';
-      card.querySelector(".no").textContent=g.no;
-      card.querySelector(".who").textContent=(g.who?g.who+" · ":"")+real+"명";
-      var box=card.querySelector(".names");
-      g.names.forEach(function(n){
-        var s=document.createElement("span");
-        if(n===null){s.className="n empty";s.textContent="공석";}
-        else{s.className="n"+(markBoth&&both[n]?" both":"");s.textContent=n;}
-        box.appendChild(s);
-      });
-      host.appendChild(card);
-    });
-  }
-  render("relay-teams",relay,true);
-  render("tug-teams",tug,true);
 
   var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
   function select(tab){

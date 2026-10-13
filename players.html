@@ -174,6 +174,23 @@ figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line)
 figcaption{font-size:12px;color:var(--muted)}
 @media (max-width:720px){.howto{grid-template-columns:1fr}}
 
+/* lunch, food, lucky draw */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.info{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.info h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.info p{font-size:14px}
+.mini{width:100%;border-collapse:collapse;font-size:13px}
+.mini th,.mini td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.mini th{color:var(--muted);font-weight:600;white-space:nowrap}
+.mini td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini tr.us td,.mini tr.us th{background:var(--team-soft);color:var(--team);font-weight:700}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.slot{border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.slot b{font-family:var(--mono);font-size:12px}
+.slot.us{background:var(--team);border-color:var(--team);color:var(--paper)}
+.slot.us b{color:var(--paper)}
+@media (max-width:560px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* checklist */
 .check{display:flex;flex-direction:column;gap:14px}
 .phase{display:grid;grid-template-columns:116px 1fr;gap:14px}
@@ -259,11 +276,11 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     </div>
     <ul class="spots" aria-label="주요 위치 안내">
       <li><b>등록 · 각 천막 앞 접수대</b><span>09:00–09:30 명단 확인 후 기념품과 행운권 배부</span></li>
-      <li><b>경품교환처 · 의무실 · 무대 왼쪽</b><span>09:30 이후 등록, 행운권 문의, 다쳤을 때</span></li>
+      <li><b>경품교환처 · 의무실 · 무대 옆 (지도 기준 왼쪽)</b><span>09:30 이후 등록, 행운권 문의, 다쳤을 때</span></li>
       <li><b>인생네컷 · 경품교환처 옆</b><span>포토부스, 쉬는 시간에 자유롭게 이용</span></li>
-      <li><b>시스템부스 · 상황실 · 무대 오른쪽</b><span>행사 진행 운영과 경품 보관</span></li>
+      <li><b>시스템부스 · 상황실 · 무대 옆 (지도 기준 오른쪽)</b><span>행사 진행 운영과 경품 보관</span></li>
       <li><b>본부석 · 오른쪽 천막 줄 가운데</b><span>행사 본부 천막(3동)</span></li>
-      <li><b>푸드트럭 · 본관 쪽</b><span>11:30–13:30 점심 시간 운영</span></li>
+      <li><b>푸드트럭 · 본관 쪽</b><span>점심 시간 운영 · 6대, 대부분 4,000원</span></li>
     </ul>
   </section>
 
@@ -278,10 +295,10 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <li class="ours" data-s="1030" data-e="1045"><span class="time">10:30–10:45</span><span class="what"><strong>에어사다리 릴레이 <span class="tag relay">선수 32</span></strong><span class="sub">A조 예선 6팀 동시 → 조별 상위 3팀 결승</span><span class="gather">10:20까지 천막 앞 집결</span></span></li>
       <li class="ours" data-s="1045" data-e="1115"><span class="time">10:45–11:15</span><span class="what"><strong>줄다리기 예선 · 준준결승 <span class="tag tug">선수 30</span></strong><span class="sub">예선 1경기 vs 연구융합지원 · 3줄 동시 · 단판</span><span class="gather">10:35까지 천막 앞 집결</span></span></li>
       <li data-s="1115" data-e="1130"><span class="time">11:15–11:30</span><span class="what"><strong>비전탑 쌓기 <span class="tag all">전원</span></strong><span class="sub">60주년 메시지 포함</span></span></li>
-      <li data-s="1130" data-e="1330"><span class="time">11:30–13:30</span><span class="what"><strong>점심 · 푸드트럭 · 미니게임 부스</strong><span class="sub">축구다트 · 핑퐁토스 · 3단농구 · 해머게임 · 도전 스틱잡기 · 스톱워치</span></span></li>
+      <li class="ours" data-s="1130" data-e="1330"><span class="time">11:30–13:30</span><span class="what"><strong>점심 · 푸드트럭 · 미니게임</strong><span class="sub">특식 나주곰탕 · 대식당/외빈식당 · 잔디마당 미니올림픽 6종</span><span class="gather">AI·로봇 식사 12:30–13:00 (3차)</span></span></li>
       <li class="ours" data-s="1330" data-e="1400"><span class="time">13:30–14:00</span><span class="what"><strong>줄다리기 준결승 · 결승 <span class="tag tug">오전 통과 시</span></strong><span class="sub">부전승 결정전 "대왕 제기차기" 팀별 대표 4명</span><span class="gather">13:20까지 메인무대 앞 집결</span></span></li>
-      <li data-s="1400" data-e="1500"><span class="time">14:00–15:00</span><span class="what"><strong>무대 이벤트</strong><span class="sub">OX퀴즈 · 학연생 밴드 · 스크린 이벤트 · 출연연 연합밴드</span></span></li>
-      <li data-s="1500" data-e="1600"><span class="time">15:00–16:00</span><span class="what"><strong>시상식 · 행운권 추첨 · 폐회</strong><span class="sub">종합우승 1·2·3등 · 우승기 수령</span></span></li>
+      <li data-s="1400" data-e="1500"><span class="time">14:00–15:00</span><span class="what"><strong>레크리에이션 · 축하공연</strong><span class="sub">14:00 개원 60주년 O·X 퀴즈(상품 증정) · 14:20 KIST K-밴드 마이너리비전 · 14:40 출연연 연합밴드 OneST</span></span></li>
+      <li data-s="1500" data-e="1600"><span class="time">15:00–16:00</span><span class="what"><strong>럭키드로우 · 시상 · 폐회</strong><span class="sub">행운권을 끝까지 챙겨 주세요 · 종합우승 1·2·3등 시상</span></span></li>
     </ol>
   </section>
 
@@ -351,6 +368,59 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
           <figcaption>경기장 배치와 참고 사진</figcaption>
         </figure>
       </div>
+      <h3>점심 · 푸드트럭 · 미니게임</h3>
+      <div class="info-grid">
+        <div class="info" id="how-lunch">
+          <h3>체육대회 특식 · 나주곰탕 <span class="tag all">점심</span></h3>
+          <p>줄 서지 않도록 소본부별로 나눠 입장합니다. <strong>AI·로봇은 3차 12:30–13:00</strong>입니다.</p>
+          <div class="slots" aria-label="소본부별 식사 시간">
+            <div class="slot"><b>1차 11:30</b>바이오·메디컬 · 강릉분원 · 전북분원</div>
+            <div class="slot"><b>2차 12:00</b>차세대반도체 · 기후환경 · 첨단소재</div>
+            <div class="slot us"><b>3차 12:30</b>AI·로봇 · 청정수소융합 · 연구지원(행정)</div>
+            <div class="slot"><b>4차 13:00</b>뇌과학 · 지속가능미래기술 · 연구융합지원</div>
+          </div>
+          <table class="mini">
+            <tr><th>대식당</th><td>11:20–13:30 (A·B코너만 운영)</td></tr>
+            <tr><th>외빈식당</th><td>11:30–13:00</td></tr>
+          </table>
+        </div>
+        <div class="info">
+          <h3>잔디마당 미니올림픽 <span class="tag all">점심 시간</span></h3>
+          <p>게임 부스 6곳 중 <strong>3종목 이상 성공</strong>하면 경품교환처에서 키캡 키링을 받을 수 있습니다.</p>
+          <table class="mini">
+            <tr><th>축구다트</th><td>공을 차서 다트판에 명중</td></tr>
+            <tr><th>핑퐁토스</th><td>탁구공을 컵에 골인</td></tr>
+            <tr><th>3단 농구</th><td>3단 골대에 골인</td></tr>
+            <tr><th>해머게임</th><td>힘껏 내리쳐 최고 점수</td></tr>
+            <tr><th>스틱잡기</th><td>떨어지는 스틱 10개 잡기</td></tr>
+            <tr><th>스톱워치</th><td>6.60초에 딱 맞춰 멈추기</td></tr>
+          </table>
+        </div>
+        <div class="info">
+          <h3>푸드트럭 6대 <span class="tag all">본관 쪽</span></h3>
+          <table class="mini">
+            <tr><th>츄러스·아이스크림</th><td>소프트아이스크림 · 츄러스</td><td class="r">4,000</td></tr>
+            <tr><th>닭강정</th><td>중 8,000 · 대</td><td class="r">12,000</td></tr>
+            <tr><th>타코야끼</th><td>8알</td><td class="r">4,000</td></tr>
+            <tr><th>핫도그·소떡소떡</th><td>페스츄리 핫도그 · 소떡소떡</td><td class="r">4,000</td></tr>
+            <tr><th>떡볶이·어묵</th><td>떡볶이 · 꼬치어묵 3개</td><td class="r">4,000</td></tr>
+            <tr><th>생맥주</th><td>카스 14oz</td><td class="r">4,000</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="info" id="how-lucky">
+        <h3>럭키드로우 <span class="tag all">15:00</span></h3>
+        <p>등록할 때 받은 행운권을 폐회식까지 꼭 챙겨 주세요. 1등 선물은 끝까지 남은 사람만 확인할 수 있습니다.</p>
+        <table class="mini">
+          <tr><th>1등</th><td>200만원 상당 (비공개)</td><td class="r">1명</td></tr>
+          <tr><th>2등</th><td>스탠바이미 2 MAX</td><td class="r">1명</td></tr>
+          <tr><th>3등</th><td>에어팟 맥스</td><td class="r">1명</td></tr>
+          <tr><th>4등</th><td>다이슨 에어랩</td><td class="r">2명</td></tr>
+          <tr><th>5등</th><td>웨스틴조선 아리아 식사권 (2인)</td><td class="r">4명</td></tr>
+          <tr><th>6등</th><td>신세계 상품권 10만원</td><td class="r">15명</td></tr>
+        </table>
+      </div>
+      <p class="note">전체 행사 안내: <a href="https://kist60festa.netlify.app/" style="color:var(--team)">KIST 가을페스타 공식 페이지</a></p>
     </div>
 
     <div class="panel" role="tabpanel" id="p-relay" aria-labelledby="t-relay" hidden>
@@ -513,7 +583,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
   // 시간표 → 구성별 안내 바로가기
   var go={"0900":["t-all","p-all"],"1000":["t-all","how-balloon"],"1015":["t-all","how-wind"],"1030":["t-relay","how-relay"],
-          "1045":["t-tug","how-tug-am"],"1115":["t-all","how-tower"],"1330":["t-tug","how-tug-pm"]};
+          "1045":["t-tug","how-tug-am"],"1115":["t-all","how-tower"],"1130":["t-all","how-lunch"],"1500":["t-all","how-lucky"],"1330":["t-tug","how-tug-pm"]};
   var smooth=!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   [].forEach.call(document.querySelectorAll("#timeline li"),function(li){
     var g=go[li.dataset.s]; if(!g) return;
